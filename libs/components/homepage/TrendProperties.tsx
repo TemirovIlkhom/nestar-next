@@ -41,7 +41,7 @@ const TrendProperties = (props: TrendPropertiesProps) => {
 		},
 	});
 	/** HANDLERS **/
-	const likePropertyHandlers = async (user: T, id: string) => {
+	const likePropertyHandler = async (user: T, id: string) => {
 		try {
 			if (!id) return;
 			if (!user._id) throw new Error(Message.NOT_AUTHENTICATED);
@@ -53,7 +53,7 @@ const TrendProperties = (props: TrendPropertiesProps) => {
 
 			await sweetTopSmallSuccessAlert("success", 800);
 		} catch (err: any) {
-			console.log("ERROR, likePropertyHandlers:", err.message);
+			console.log("ERROR, likePropertyHandler:", err.message);
 			sweetMixinErrorAlert(err.message).then();
 		}
 	};
@@ -84,7 +84,7 @@ const TrendProperties = (props: TrendPropertiesProps) => {
 								{trendProperties.map((property: Property) => {
 									return (
 										<SwiperSlide key={property._id} className={'trend-property-slide'}>
-											<TrendPropertyCard property={property} likePropertyHandlers={likePropertyHandlers}/>
+											<TrendPropertyCard property={property} likePropertyHandlers={likePropertyHandler}/>
 										</SwiperSlide>
 									);
 								})}
@@ -133,7 +133,7 @@ const TrendProperties = (props: TrendPropertiesProps) => {
 								{trendProperties.map((property: Property) => {
 									return (
 										<SwiperSlide key={property._id} className={'trend-property-slide'}>
-											<TrendPropertyCard property={property} likePropertyHandlers={likePropertyHandlers}/>
+											<TrendPropertyCard property={property} likePropertyHandlers={likePropertyHandler}/>
 										</SwiperSlide>
 									);
 								})}
